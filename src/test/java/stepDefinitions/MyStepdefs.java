@@ -32,19 +32,20 @@ public class MyStepdefs extends CommonClass {
     TechnologyPage techPage = new TechnologyPage(driver);
 
     Context context;
-Scenario scenario;
+    Scenario scenario;
 
     @Before
     public void beforeMethod(Scenario scenario) {
         context = new Context();
-    this.scenario=scenario;}
+        this.scenario = scenario;
+    }
 
     @After
     public void afterMethod() throws IOException {
         //quit driver
         Reporter.addScreenCaptureFromPath(getScreenShot(scenario.getName()));
 
-        context=null;
+        context = null;
         driver.quit();
     }
 
@@ -75,22 +76,21 @@ Scenario scenario;
 
         if (results.size() > 0) {
 
-        boolean isValidResult = true;
-        for (WebElement result : results) {
-            if (!result.getText().contains(arg0)) {
-                isValidResult = false;
+            boolean isValidResult = true;
+            for (WebElement result : results) {
+                if (!result.getText().contains(arg0)) {
+                    isValidResult = false;
+                }
             }
-        }
             //I'm commenting assert since all headers don't meet contains search criteria check.
             // This needs to be replaced with correct business logic for eg: keywords associated to the page etc
             // Assert.assertTrue("Verify search results headers contained search criteria text", isValidResult);
 
+        } else {
+            Assert.assertTrue("Verify no results message is displayed", resultsPage.labelNoResults().isDisplayed());
+            Assert.assertEquals("", "Sorry, we found no results for " + arg0 + ".", resultsPage.labelNoResults().getText());
         }
-        else{
-            Assert.assertTrue("Verify no results message is displayed",resultsPage.labelNoResults().isDisplayed());
-            Assert.assertEquals("","Sorry, we found no results for "+arg0+".",resultsPage.labelNoResults().getText());
-        }
-}
+    }
 
     @And("^Verify the results against backend$")
     public void verifyTheResultsAgainstBackend() throws Throwable {
@@ -184,8 +184,8 @@ Scenario scenario;
         String pageUrl = driver.getCurrentUrl();
         Assert.assertEquals("Verify navigation on click of subheading", context.getHref(), pageUrl);
 
-        Assert.assertTrue("Verify Technology page header is displayed",techPage.pageHeader().isDisplayed());
-        Assert.assertTrue("Verify Technology page header text",techPage.pageHeader().getText().equals("Tech News"));
+        Assert.assertTrue("Verify Technology page header is displayed", techPage.pageHeader().isDisplayed());
+        Assert.assertTrue("Verify Technology page header text", techPage.pageHeader().getText().equals("Tech News"));
 
     }
 }
