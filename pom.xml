@@ -20,23 +20,7 @@
         </plugins>
     </build>
     <dependencies>
-    <!--<dependency>-->
-        <!--<groupId>org.seleniumhq.selenium</groupId>-->
-        <!--<artifactId>selenium-java</artifactId>-->
-        <!--<version>3.141.59</version>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-        <!--<groupId>io.cucumber</groupId>-->
-        <!--<artifactId>cucumber-java8</artifactId>-->
-        <!--<version>4.2.6</version>-->
-        <!--<scope>test</scope>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-        <!--<groupId>info.cukes</groupId>-->
-        <!--<artifactId>cucumber-junit</artifactId>-->
-        <!--<version>1.2.5</version>-->
-        <!--<scope>test</scope>-->
-    <!--</dependency>-->
+    
     <dependency>
         <groupId>org.seleniumhq.selenium</groupId>
         <artifactId>selenium-java</artifactId>
@@ -85,11 +69,6 @@
             <version>3.1.2</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.aventstack</groupId>
-            <artifactId>extentreports</artifactId>
-            <version>3.1.2</version>
-        </dependency>
 </dependencies>
 
 </project>
